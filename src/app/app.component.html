@@ -1,0 +1,43 @@
+<div class="containter">
+  <div class="card m-5">
+    <div class="card-header">
+      <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="Поиск..." (keyup)="OnSearch($event)">
+        <span class="input-group-text border-0" id="search-addon">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Имя</th>
+              <th>Дата рождения</th>
+              <th>Пол</th>
+              <th>Рост</th>
+              <th>Вес</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let person of People">
+              <td>{{ person?.name }}</td>
+              <td>{{ person?.birth_year }}</td>
+              <td>{{ person?.gender }}</td>
+              <td>{{ person?.height }}</td>
+              <td>{{ person?.mass }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer text-center" *ngIf="!searchRegime">
+      <a href="javascript: void(0)" class="btn btn-success" (click)="OnPrev()"><i class="fa fa-arrow-left"></i></a>
+      <span class="m-3">Страница {{ Current }} из {{ Count }}</span>
+      <a href="javascript: void(0)" class="btn btn-success" (click)="OnNext()"><i class="fa fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<app-loader></app-loader>
